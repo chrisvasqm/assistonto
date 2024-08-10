@@ -1,17 +1,17 @@
 import cors from 'cors';
 import 'dotenv/config';
-import express from 'express';
+import express, { Response, Request, NextFunction } from 'express';
 import 'express-async-errors';
 import helmet from 'helmet';
 
 const app = express();
 
 // Node Global Error Handlers
-process.on('uncaughtException', exception => {
+process.on('uncaughtException', (exception: Error) => {
   console.error('Uncaught Exception: ', exception.stack);
 });
 
-process.on('unhandledRejection', exception => {
+process.on('unhandledRejection', (exception: Error) => {
   console.error(`Unhandled Promise Rejection: ${exception.stack}`);
 });
 
@@ -22,10 +22,10 @@ app.use(cors());
 // app.use('/api/endpoints', routers);
 
 // Express Global Error Middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
+app.use((error: Error, request: Request, response: Response, next: NextFunction) => {
+  console.error(error.stack);
 
-  res.status(500).send('Something went wrong.');
+  response.status(500).send('Something went wrong.');
 });
 
 const PORT = process.env.PORT || 3000;
