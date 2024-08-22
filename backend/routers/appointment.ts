@@ -24,13 +24,13 @@ router.get('/', async (request: AppointmentRequest, response: Response) => {
     {time: '17:00'}
   ];
 
-  const date = dayjs(request.query.date).startOf('day').toDate();
-  const endOfDay = dayjs(date).endOf('day').toDate();
+  const startOfDay = dayjs(request.query.date).startOf('day').toDate();
+  const endOfDay = dayjs(startOfDay).endOf('day').toDate();
 
   const appointments = await prisma.appointment.findMany({
     where: {
       time: {
-        gte: date,
+        gte: startOfDay,
         lt: endOfDay
       },
       isBooked: true
