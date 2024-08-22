@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:16.3-alpine3.20
+    container_name: assistonto
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: assistonto
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+volumes:
+  postgres_data:
