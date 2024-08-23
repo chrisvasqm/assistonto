@@ -10,7 +10,7 @@ interface AppointmentRequest extends Request {
   };
 }
 
-router.get('/', async (request: AppointmentRequest, response: Response) => {
+router.get('/availability', async (request: AppointmentRequest, response: Response) => {
   const slots = [
     {time: '08:00'},
     {time: '09:00'},
