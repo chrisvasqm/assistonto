@@ -14,7 +14,8 @@ datasource db {
 }
 
 model Appointment {
-  id       Int      @id @default(autoincrement())
-  time     DateTime
-  isBooked Boolean  @default(false)
+  id        Int      @id @default(autoincrement())
+  startTime DateTime
+  endTime   DateTime
+  isBooked  Boolean  @default(false)
 }

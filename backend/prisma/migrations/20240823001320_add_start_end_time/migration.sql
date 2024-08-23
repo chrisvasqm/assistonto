@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Appointment" ALTER COLUMN "endTime" DROP DEFAULT,
+ALTER COLUMN "startTime" DROP DEFAULT;
